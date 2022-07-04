@@ -17,6 +17,9 @@ class _BottomNavBarState extends State<BottomNavBar> {
     return Scaffold(
         bottomNavigationBar: CurvedNavigationBar(
           key: _bottomNavigationKey,
+          curveHeight: 0.5,
+          curveWidth: 0.3,
+          curveLeftRightRadius: 0.01,
           index: 0,
           height: 60.0,
           items: <Widget>[

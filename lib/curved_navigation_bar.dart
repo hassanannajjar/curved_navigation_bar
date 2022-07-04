@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:meta/meta.dart';
 import 'src/nav_button.dart';
 import 'src/nav_custom_painter.dart';
 
@@ -16,6 +15,10 @@ class CurvedNavigationBar extends StatefulWidget {
   final Curve animationCurve;
   final Duration animationDuration;
   final double height;
+  final double curveHeight;
+  final double curveWidth;
+  final double curveLeftRightRadius;
+  final double curveInside;
 
   CurvedNavigationBar({
     Key? key,
@@ -29,8 +32,11 @@ class CurvedNavigationBar extends StatefulWidget {
     this.animationCurve = Curves.easeOut,
     this.animationDuration = const Duration(milliseconds: 600),
     this.height = 75.0,
+    this.curveHeight = 0.60,
+    this.curveWidth = 0.4,
+    this.curveLeftRightRadius = 0.1,
+    this.curveInside = 0.20,
   })  : letIndexChange = letIndexChange ?? ((_) => true),
-        assert(items != null),
         assert(items.length >= 1),
         assert(0 <= index && index < items.length),
         assert(0 <= height && height <= 75.0),
@@ -132,7 +138,15 @@ class CurvedNavigationBarState extends State<CurvedNavigationBar>
             bottom: 0 - (75.0 - widget.height),
             child: CustomPaint(
               painter: NavCustomPainter(
-                  _pos, _length, widget.color, Directionality.of(context)),
+                _pos,
+                _length,
+                widget.color,
+                Directionality.of(context),
+                curveHeight: widget.curveHeight,
+                curveWidth: widget.curveWidth,
+                curveLeftRightRadius: widget.curveLeftRightRadius,
+                curveInside: widget.curveInside,
+              ),
               child: Container(
                 height: 75.0,
               ),
