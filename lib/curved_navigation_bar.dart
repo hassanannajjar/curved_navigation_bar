@@ -39,7 +39,6 @@ class CurvedNavigationBar extends StatefulWidget {
   })  : letIndexChange = letIndexChange ?? ((_) => true),
         assert(items.length >= 1),
         assert(0 <= index && index < items.length),
-        assert(0 <= height && height <= 75.0),
         super(key: key);
 
   @override
